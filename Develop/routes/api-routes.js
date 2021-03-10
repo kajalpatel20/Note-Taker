@@ -1,5 +1,7 @@
 
 // ROUTING
+const fs = require("fs");
+const { fromString } = require('uuidv4');
 const notes = require('../db/db.json')
 
 module.exports = (app) => {
@@ -9,7 +11,7 @@ module.exports = (app) => {
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
 
-  app.get('/api/notes', function(req, res){
+  app.get('/api/notes', function (req, res) {
     console.log('route hit', notes)
     res.json(notes)
   });
@@ -23,16 +25,32 @@ module.exports = (app) => {
   // Then the server saves the data to the tableData array)
   // ---------------------------------------------------------------------------
 
-  app.post('/api/notes', function(req, res){
-        console.log('note', req.body)
-        var newNote = {
-            tilte: req.body.title,
-            text: req.body.text,
-            id: uuidv4()
+  app.post('/api/notes', function (req, res) {
+    console.log
+    console.log('note', req.body)
+    var newNote = {
+      tilte: req.body.title,
+      text: req.body.text,
+      id: uuidv4()
+    }
+    fs.readFile(__dirname + '../db/db.json', 'UTF8', function (error, notes) {
+      if (error) {
+        return console.log(error)
+      }
+      notes = JSON.parse(notes)
+      var activeNote = notes.concat(newNote)
+      fs.writeFile(__dirname + '../db/db.json', JSON.stringify(activeNote), function (error, data) {
+        if (error) {
+          return console.log(error)
         }
-//read db.json file; get an array back.
-//push newNote obj into the array
-//write new array into db.json file
+        console.log(activeNote)
+        res.json(activeNote)
+      })
+
+    })
+
+    //push newNote obj into the array
+    //write new array into db.json file
 
 
   });
