@@ -59,10 +59,11 @@ The following images show the web application's appearance and functionality:
 
  * A demonstrating the functionality of the application:
 
-[Heroku link]()
+[Heroku link](https://kaj-note-taker.herokuapp.com/notes)
 
 * The URL of the functional, deployed application.
 
+https://kaj-note-taker.herokuapp.com/notes
 
 * The URL of the GitHub repository, with a unique name and a readme describing the project:
 
