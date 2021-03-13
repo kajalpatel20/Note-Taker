@@ -81,6 +81,8 @@ https://github.com/kajalpatel20/Note-Taker
 
 The repo for this project can be found here: 
 
+https://github.com/kajalpatel20/Note-Taker
+
 For any questions please email me at: kajalpatel20@gmail.com
 
 
